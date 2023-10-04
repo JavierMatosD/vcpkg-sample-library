@@ -42,5 +42,3 @@ file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/my_sample_lib-config.cmake"
 # Install the generated config file
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/my_sample_lib-config.cmake"
         DESTINATION share/my_sample_lib)
-
-file(INSTALL "${CMAKE_CURRENT_BINARY_DIR}/LICENSE" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME copyright)
