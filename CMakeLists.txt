@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 project(my_sample_lib)
 
 add_library(my_sample_lib STATIC my_sample_lib.cpp)
+target_include_directories(my_sample_lib PUBLIC $<INSTALL_INTERFACE:include>)
 
 install(TARGETS my_sample_lib
         EXPORT my_sample_lib_targets
@@ -20,8 +21,8 @@ install(EXPORT my_sample_lib_targets
         DESTINATION share/my_sample_lib/cmake)
 
 # Simple *-config.cmake file without any conditions
-file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/my_sample_lib-config.cmake" 
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/share/my_sample_lib/cmake/my_sample_lib-config.cmake" 
 "include(\"\${CMAKE_CURRENT_LIST_DIR}/my_sample_lib-targets.cmake\")")
 
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/my_sample_lib-config.cmake"
-        DESTINATION share/my_sample_lib/cmake)
+
+     
