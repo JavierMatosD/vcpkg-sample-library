@@ -2,12 +2,20 @@ cmake_minimum_required(VERSION 3.10)
 
 project(my_sample_lib)
 
+# Find the fmt library
+find_package(fmt CONFIG REQUIRED)
+
 # Add your library
 add_library(my_sample_lib STATIC my_sample_lib.cpp)
 
-# Add include directories
-target_include_directories(my_sample_lib PUBLIC $<INSTALL_INTERFACE:include>)
+# Link your library to fmt
+target_link_libraries(my_sample_lib PRIVATE fmt::fmt)
 
+# Add include directories
+target_include_directories(my_sample_lib PUBLIC 
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>   # for headers when building
+    $<INSTALL_INTERFACE:include>  # for client in install mode
+)
 # Install the library and its headers
 install(TARGETS my_sample_lib
         EXPORT my_sample_lib_targets
