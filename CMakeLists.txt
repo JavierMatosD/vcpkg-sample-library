@@ -21,8 +21,10 @@ install(EXPORT my_sample_lib_targets
         DESTINATION share/my_sample_lib)
 
 # Simple *-config.cmake file without any conditions
-file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/share/my_sample_lib/my_sample_lib-config.cmake" 
+file(WRITE "share/my_sample_lib/my_sample_lib-config.cmake" 
 "include(\"\${CMAKE_CURRENT_LIST_DIR}/my_sample_lib-targets.cmake\")")
+
+
 
 
      
